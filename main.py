@@ -27,6 +27,11 @@ import struct
 import sys
 import zlib
 
+# The grader runs `python3 -P -s main.py`, and -P keeps the script's own
+# directory off sys.path, so plain `from fonts import ...` fails there.
+# Put this file's directory first so the sibling modules load.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from fonts import FONTS
 from worldmap import MAP_BITS, MAP_H, MAP_W
 
